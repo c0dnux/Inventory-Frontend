@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   NEUTRAL SCALE (slate/gray) — single source of truth.
+   Utilities reference these CSS variables so every page flips
+   to the dark theme automatically when `.dark` is present.
+   Light values follow the TailAdmin gray palette.
+   ============================================================ */
+:root {
+  --n-25: 252 252 253; /* #fcfcfd */
+  --n-50: 249 250 251; /* #f9fafb */
+  --n-100: 242 244 247; /* #f2f4f7 */
+  --n-200: 228 231 236; /* #e4e7ec */
+  --n-300: 208 213 221; /* #d0d5dd */
+  --n-400: 152 162 179; /* #98a2b3 */
+  --n-500: 102 112 133; /* #667085 */
+  --n-600: 71 84 103; /* #475467 */
+  --n-700: 52 64 84; /* #344054 */
+  --n-800: 29 41 57; /* #1d2939 */
+  --n-900: 16 24 40; /* #101828 */
+  --n-950: 12 17 29; /* #0c111d */
+}
+
+.dark {
+  --n-25: 16 24 40; /* #101828 */
+  --n-50: 16 24 40; /* #101828 */
+  --n-100: 29 41 57; /* #1d2939 */
+  --n-200: 52 64 84; /* #344054 */
+  --n-300: 71 84 103; /* #475467 */
+  --n-400: 102 112 133; /* #667085 */
+  --n-500: 152 162 179; /* #98a2b3 */
+  --n-600: 176 184 194; /* #b0b8c2 */
+  --n-700: 208 213 221; /* #d0d5dd */
+  --n-800: 228 231 236; /* #e4e7ec */
+  --n-900: 242 244 247; /* #f2f4f7 */
+  --n-950: 249 250 251; /* #f9fafb */
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-slate-100 font-sans text-slate-900 dark:bg-gray-900;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-slate-300 dark:bg-slate-700;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-slate-400 dark:bg-slate-600;
+  }
+}
+
+@layer components {
+  /* Consistent input styling used across all forms (TailAdmin look) */
+  .field {
+    @apply w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-800 shadow-theme-xs transition placeholder:text-slate-400 focus:border-brand-300 focus:outline-none focus:ring-[3px] focus:ring-brand-500/10 disabled:cursor-not-allowed disabled:bg-slate-100 disabled:text-slate-400 dark:border-gray-700 dark:bg-white/[0.03] dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800;
+  }
+
+  .label {
+    @apply mb-2 block text-sm font-medium text-slate-700 dark:text-gray-400;
+  }
+}
+
+@layer utilities {
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
