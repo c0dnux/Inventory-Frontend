@@ -55,7 +55,7 @@ export function NotificationBell() {
       {open && (
         <>
           <div className="fixed inset-0 z-30" onClick={() => setOpen(false)} />
-          <div className="absolute right-0 z-40 mt-3 w-[min(22rem,calc(100vw-2rem))] animate-scale-in overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-theme-lg dark:border-gray-800 dark:bg-gray-900">
+          <div className="fixed inset-x-3 z-40 mt-3 animate-scale-in overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-theme-lg lg:absolute lg:inset-x-auto lg:right-0 lg:w-[min(22rem,calc(100vw-2rem))] dark:border-gray-800 dark:bg-gray-900">
             <div className="flex items-center justify-between border-b border-gray-100 px-4 py-3 dark:border-gray-800">
               <p className="text-sm font-semibold text-slate-900 dark:text-white/90">
                 Notifications

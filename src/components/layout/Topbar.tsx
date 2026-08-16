@@ -38,19 +38,19 @@ export function Topbar() {
 
   return (
     <header className="sticky top-0 z-30 flex w-full border-b border-gray-200 bg-white dark:border-gray-800 dark:bg-gray-900">
-      <div className="flex w-full flex-col items-center justify-between gap-2 lg:flex-row lg:px-6">
-        <div className="flex w-full items-center justify-between gap-2 px-3 py-3 sm:gap-4 lg:justify-normal lg:px-0 lg:py-4">
+      <div className="flex w-full items-center justify-between gap-2 px-3 py-3 sm:gap-4 lg:px-6">
+        <div className="flex min-w-0 flex-1 items-center gap-2 sm:gap-3">
           <button
             onClick={handleToggle}
             aria-label="Toggle Sidebar"
-            className="z-30 flex h-11 w-11 items-center justify-center rounded-lg border border-gray-200 text-slate-500 transition hover:bg-slate-100 dark:border-gray-800 dark:text-gray-400 dark:hover:bg-gray-800"
+            className="z-30 flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-gray-200 text-slate-500 transition hover:bg-slate-100 dark:border-gray-800 dark:text-gray-400 dark:hover:bg-gray-800"
           >
             {isMobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
 
           <form
             onSubmit={handleSearchSubmit}
-            className="hidden w-full max-w-[430px] lg:block"
+            className="hidden w-full max-w-[430px] flex-1 lg:block"
             role="search"
           >
             <div className="relative">
@@ -66,12 +66,9 @@ export function Topbar() {
           </form>
         </div>
 
-        <div className="flex w-full items-center justify-between gap-4 px-5 py-3 shadow-theme-md lg:w-auto lg:justify-end lg:px-0 lg:py-0 lg:shadow-none">
-          <div className="flex items-center gap-2 sm:gap-3">
-            <ThemeToggleButton />
-            <NotificationBell />
-          </div>
-
+        <div className="flex shrink-0 items-center gap-2 sm:gap-3">
+          <ThemeToggleButton />
+          <NotificationBell />
           <div className="relative">
             <button
               onClick={() => setMenuOpen((o) => !o)}
