@@ -4,12 +4,12 @@ import { Sidebar } from "./Sidebar";
 import { Topbar } from "./Topbar";
 
 function LayoutContent() {
-  const { isExpanded, isMobileOpen, isHovered, toggleMobileSidebar } = useSidebar();
+  const { isExpanded, isMobileOpen, isHovered, toggleMobileSidebar, closeMobileSidebar } = useSidebar();
 
   return (
     <div className="min-h-screen xl:flex">
       <div>
-        <Sidebar />
+        <Sidebar onNavigate={closeMobileSidebar} />
         {isMobileOpen && (
           <div
             className="fixed inset-0 z-40 bg-slate-900/50 backdrop-blur-sm lg:hidden"

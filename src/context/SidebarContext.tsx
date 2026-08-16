@@ -6,6 +6,7 @@ interface SidebarContextValue {
   isHovered: boolean;
   toggleSidebar: () => void;
   toggleMobileSidebar: () => void;
+  closeMobileSidebar: () => void;
   setIsHovered: (hovered: boolean) => void;
 }
 
@@ -42,6 +43,7 @@ export function SidebarProvider({ children }: { children: ReactNode }) {
         isHovered,
         toggleSidebar: () => setIsExpanded((prev) => !prev),
         toggleMobileSidebar: () => setIsMobileOpen((prev) => !prev),
+        closeMobileSidebar: () => setIsMobileOpen(false),
         setIsHovered,
       }}
     >

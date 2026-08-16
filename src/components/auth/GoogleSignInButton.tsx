@@ -17,6 +17,9 @@ interface GoogleIdentity {
 
 const GOOGLE_CLIENT_ID = (import.meta.env.VITE_GOOGLE_CLIENT_ID as string | undefined) || "";
 
+/** Track initialization at module level so React Strict Mode remounts don't re-init. */
+let gisInitialized = false;
+
 interface GoogleSignInButtonProps {
   /** Receives the Google ID credential to exchange on the backend. */
   onCredential: (credential: string) => void;
@@ -49,10 +52,13 @@ export function GoogleSignInButton({ onCredential, disabled }: GoogleSignInButto
 
     const render = () => {
       if (cancelled || !win.google || !containerRef.current) return;
-      win.google.accounts.id.initialize({
-        client_id: GOOGLE_CLIENT_ID,
-        callback: (response) => onCredentialRef.current(response.credential),
-      });
+      if (!gisInitialized) {
+        win.google.accounts.id.initialize({
+          client_id: GOOGLE_CLIENT_ID,
+          callback: (response) => onCredentialRef.current(response.credential),
+        });
+        gisInitialized = true;
+      }
       win.google.accounts.id.renderButton(containerRef.current, {
         theme: "outline",
         size: "large",
